@@ -8,7 +8,7 @@ import styles from "./editProfile.module.css";
 
 const IMGBB_API_KEY = "dd322961586fcc3d8fc0c2a65432e0e9"; // 🔁 Replace this with your real API key
 
-export default function EditProfile() {
+export default function Editprofile() {
   const [user] = useAuthState(auth);
   const [formData, setFormData] = useState({
     displayName: "",

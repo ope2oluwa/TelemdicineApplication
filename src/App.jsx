@@ -16,7 +16,7 @@ import Profile from "./Components/Profile";
 import PrivateRoute from "./Components/PrivateRoute";
 import RoleProtectedRoute from "./Components/RoleProtectedRoute";
 import Loader from "./Components/Loader";
-import EditProfile from "./Components/EditProfile";
+import Editprofile from "./Components/Editprofile";
 import Chatbot from "./Components/Chatbot";
 import ResourcesPage from "./Components/ResourcesPage";
 import ResourcesDetail from "./Components/ResourcesDetail";
@@ -80,7 +80,7 @@ function App() {
           path="/edit-profile"
           element={
             <PrivateRoute user={userWithRole}>
-              <EditProfile />
+              <Editprofile />
             </PrivateRoute>
           }
         />
