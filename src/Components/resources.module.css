@@ -1,0 +1,90 @@
+.container {
+    padding: 2rem;
+    margin: 3rem 5rem; 
+  }
+  .containerHeading{
+    text-align: center;
+  }
+  .containerHeading p{
+    margin: 1rem;
+    font-size: 22px;
+    font-weight: li;
+  }
+ 
+  .containerFirstDiv{
+    border: 1px black;
+    border-radius: 10px;
+    /* box-shadow: 1px 10px 15px 1px rgb(219, 218, 218); */box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 3rem 0;
+    padding: 2rem;
+  }
+  
+  .searchBar {
+    width: 100%;
+    padding: 12px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .filters button {
+    margin: 5px;
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: none;
+    background-color: #D1D5DB;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .filters .active {
+    background-color: #4F46E5;
+    color: white;
+  }
+  
+  .cardGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    width: 300px;
+  }
+  
+  .card img {
+    width: 100%;
+    border-radius: 12px;
+    height: 160px;
+    object-fit: cover;
+  }
+  
+  .tag {
+    background-color: #fcd34d;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    position: absolute;
+    margin-top: -25px;
+    margin-left: 10px;
+  }
+  
+  .type {
+    font-size: 15px;
+    color: gray;
+    margin-top: 5px;
+  }
+  .link{
+    text-decoration: none;
+    color: #4F46E5;
+  }

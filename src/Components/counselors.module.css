@@ -1,0 +1,56 @@
+.container {
+  padding: 2rem;
+  margin: 3rem 5rem; 
+}
+.containerHeading{
+  text-align: center;
+}
+.containerHeading p{
+  margin: 1rem;
+  font-size: 22px;
+  font-weight: li;
+}
+
+.containerFirstDiv{
+  display: flex;
+  align-items: center;
+  border: 1px black;
+  border-radius: 10px;
+  /* box-shadow: 1px 10px 15px 1px rgb(219, 218, 218); */box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 3rem 0;
+  padding: 2rem;
+}
+
+.searchBar {
+  width: 80rem;
+  padding: 12px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.SpecializeDiv{
+  margin: 20px 0;
+  padding: 12px;
+}
+.SpecializeDiv select{
+  width: 100%;
+  height: 40px;
+}
+.Dropdown{
+  margin-top: 0.3rem;
+  width: 15rem;
+  height: 43px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+.noResults {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  margin-top: 2rem;
+}

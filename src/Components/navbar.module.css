@@ -1,0 +1,163 @@
+/* Navbar container */
+.navbar {
+  font-family: sans-serif;  
+  background-color: #4F46E5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+/* Navigation links */
+.navlinks {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  color: #ffffff;
+}
+
+.navlinks li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  background-color: #4F46E5; /* Indigo 500 #6366F1 */
+  transition: background 0.3s;
+  padding: 8px 12px; /* Vertical 8px, Horizontal 12px */
+  border-radius: 6px; /* Medium rounded corners */
+  font-size: 16px; /* Small font */
+  font-weight: 500; /* Medium weight */
+}
+
+.navlinks li a:hover {
+ background-color:  #6366F1; /* Darker Indigo #4F46E5 */
+}
+
+.usericon{
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+
+.greeting {
+  margin-right: 1rem;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+/* Sign Up Button */
+.signupbtn {
+  font-weight: 550;
+  background-color: #ffffff;
+  color:  #4F46E5;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.signupbtn:hover {
+  background-color: #ededed;
+}
+
+/* Mobile Menu Button */
+.menubtn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menuicon {
+  width: 24px;
+  height: 24px;
+  color: #ffffff;
+}
+
+/* Mobile Menu */
+.mobile_menu {
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  background-color: #4F46E5;
+  padding: 16px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 60px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mobile_menu li {
+  padding: 10px 0;
+}
+.mobile_menu li a{
+  text-decoration: none;
+  color: #fff;
+  border-radius: 5px;
+  display: block;
+}
+
+.mobile_menu li a:hover{
+  background-color:  #6366F1;
+}
+
+.mobile_signup_btn {
+  font-weight: 550;
+  background-color:  white;
+  color: #4F46E5;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+}
+.mobile_signup_btn:hover{
+  background-color: #ededed;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navlinks {
+    display: none;
+  }
+  .signupbtn {
+    display: none;
+  }
+  .menubtn {
+    display: block;
+  }
+  .mobile_menu {
+    display: flex;
+  }
+  .mobile_menu li {
+    width: 100%;
+  }
+  .mobile_menu li a{
+    width: 100%;
+    padding: 8px 12px;
+  }
+}

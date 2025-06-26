@@ -1,0 +1,69 @@
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #1f2937;
+  }
+  
+  .backLink {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #6b46c1;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .backLink:hover {
+    color: #4c1d95;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .categoryTag {
+    display: inline-block;
+    background-color: #e0e7ff;
+    color: #3730a3;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  
+  .image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 25px;
+  }
+  
+  .content {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  .videoFrame {
+    width: 100%;
+    height: 500px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 25px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .title {
+      font-size: 1.5rem;
+    }
+  
+    .videoFrame {
+      height: 250px;
+    }
+  }
+  

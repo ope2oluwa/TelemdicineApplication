@@ -1,0 +1,147 @@
+.schedulePage {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  font-family: /* "Segoe UI", sans-serif;   */ PT sans and Montserrat;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.image {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 100%;
+  border: 4px solid #5e81f4;
+}
+
+.info {
+  flex: 1;
+}
+
+.info h2 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.info p {
+  margin-bottom: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background-color: #5e81f4;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #444;
+}
+
+.input {
+  padding: 0.6rem 0.9rem;
+  font-size: 1rem;
+  margin-top: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  letter-spacing: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.button {
+  padding: 0.8rem 1.2rem;
+  background-color: #5e81f4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #3f66e0;
+}
+
+.icon {
+  margin-right: 0.5rem;
+  color: #5e81f4;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.closeModalButton {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #5e81f4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.closeModalButton:hover {
+  background-color: #3f66e0;
+}

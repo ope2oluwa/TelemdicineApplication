@@ -1,0 +1,89 @@
+.footer {
+  background-color: #1f2937;
+  color: white;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.text {
+  color: #d1d5db;
+  margin-bottom: 15px;
+}
+
+.iconText {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.heartIcon {
+  color: #f87171;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+}
+
+.link {
+  color: #d1d5db;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.link:hover {
+  color: white;
+}
+
+.contactInfo {
+  margin-top: 10px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.emergency {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #d1d5db;
+}
+
+.importantText {
+  color: #f87171;
+  font-weight: bold;
+}
+
+.footerBottom {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #374151;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
