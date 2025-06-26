@@ -13,7 +13,7 @@ import Navbar from "./Components/Navbar";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Profile from "./Components/Profile";
-import PrivateRoute from "./Components/PrivateRoute";
+import Privateroute from "./Components/Privateroute";
 import RoleProtectedRoute from "./Components/RoleProtectedRoute";
 import Loader from "./Components/Loader";
 import Editprofile from "./Components/Editprofile";
@@ -71,17 +71,17 @@ function App() {
         <Route
           path="/profile"
           element={
-            <PrivateRoute user={userWithRole}>
+            <Privateroute user={userWithRole}>
               <Profile user={userWithRole} />
-            </PrivateRoute>
+            </Privateroute>
           }
         />
         <Route
           path="/edit-profile"
           element={
-            <PrivateRoute user={userWithRole}>
+            <Privateroute user={userWithRole}>
               <Editprofile />
-            </PrivateRoute>
+            </Privateroute>
           }
         />
 
@@ -131,25 +131,25 @@ function App() {
         <Route
           path="/my-sessions"
           element={
-            <PrivateRoute user={userWithRole}>
+            <Privateroute user={userWithRole}>
               <MySessions user={userWithRole} />
-            </PrivateRoute>
+            </Privateroute>
           }
         />
         <Route
           path="/room/:roomId"
           element={
-            <PrivateRoute user={userWithRole}>
+            <Privateroute user={userWithRole}>
               <VideoCallRoom />
-            </PrivateRoute>
+            </Privateroute>
           }
         />
         <Route
           path="/choose-role"
           element={
-            <PrivateRoute user={userWithRole}>
+            <Privateroute user={userWithRole}>
               <ChooseRole />
-            </PrivateRoute>
+            </Privateroute>
           }
         />
       </Routes>
