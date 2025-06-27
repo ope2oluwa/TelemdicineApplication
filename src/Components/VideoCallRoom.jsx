@@ -19,7 +19,6 @@ const VideoCallRoom = () => {
   const navigate = useNavigate();
 
   const [remoteStream, setRemoteStream] = useState(null);
-  const [connected, setConnected] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [isVideoOff, setIsVideoOff] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
@@ -29,7 +28,7 @@ const VideoCallRoom = () => {
   const localVideoRef = useRef(null);
   const remoteVideoRef = useRef(null);
   const socketRef = useRef(null);
-  const peerConnectionRef = useRef(null);
+  const peerConnectionsRef = useRef({});
   const localStreamRef = useRef(null);
 
   const servers = {
@@ -39,6 +38,7 @@ const VideoCallRoom = () => {
   useEffect(() => {
     const startConnection = async () => {
       socketRef.current = io(SOCKET_SERVER_URL);
+
       localStreamRef.current = await navigator.mediaDevices.getUserMedia({
         video: true,
         audio: true,
@@ -48,7 +48,6 @@ const VideoCallRoom = () => {
       socketRef.current.emit("join", roomId);
 
       socketRef.current.on("user-joined", (userId) => {
-        console.log("User joined:", userId);
         callUser(userId);
       });
 
@@ -59,19 +58,25 @@ const VideoCallRoom = () => {
     };
 
     const callUser = async (userId) => {
-      peerConnectionRef.current = createPeerConnection(userId);
-      localStreamRef.current
-        .getTracks()
-        .forEach((track) =>
-          peerConnectionRef.current.addTrack(track, localStreamRef.current)
-        );
-      const offer = await peerConnectionRef.current.createOffer();
-      await peerConnectionRef.current.setLocalDescription(offer);
-      socketRef.current.emit("offer", { target: userId, offer });
+      const pc = createPeerConnection(userId);
+      peerConnectionsRef.current[userId] = pc;
+
+      localStreamRef.current.getTracks().forEach((track) => {
+        pc.addTrack(track, localStreamRef.current);
+      });
+
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+
+      socketRef.current.emit("offer", {
+        target: userId,
+        offer,
+      });
     };
 
     const createPeerConnection = (userId) => {
       const pc = new RTCPeerConnection(servers);
+
       pc.onicecandidate = (event) => {
         if (event.candidate) {
           socketRef.current.emit("ice-candidate", {
@@ -80,37 +85,47 @@ const VideoCallRoom = () => {
           });
         }
       };
+
       pc.ontrack = (event) => {
-        setRemoteStream(event.streams[0]);
-        remoteVideoRef.current.srcObject = event.streams[0];
+        if (remoteVideoRef.current) {
+          remoteVideoRef.current.srcObject = event.streams[0];
+          setRemoteStream(event.streams[0]);
+        }
       };
+
       return pc;
     };
 
     const handleReceiveOffer = async ({ from, offer }) => {
-      peerConnectionRef.current = createPeerConnection(from);
-      localStreamRef.current
-        .getTracks()
-        .forEach((track) =>
-          peerConnectionRef.current.addTrack(track, localStreamRef.current)
-        );
-      await peerConnectionRef.current.setRemoteDescription(offer);
-      const answer = await peerConnectionRef.current.createAnswer();
-      await peerConnectionRef.current.setLocalDescription(answer);
+      const pc = createPeerConnection(from);
+      peerConnectionsRef.current[from] = pc;
+
+      localStreamRef.current.getTracks().forEach((track) => {
+        pc.addTrack(track, localStreamRef.current);
+      });
+
+      await pc.setRemoteDescription(offer);
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+
       socketRef.current.emit("answer", { target: from, answer });
-      setConnected(true);
     };
 
-    const handleReceiveAnswer = async ({ answer }) => {
-      await peerConnectionRef.current.setRemoteDescription(answer);
-      setConnected(true);
+    const handleReceiveAnswer = async ({ from, answer }) => {
+      const pc = peerConnectionsRef.current[from];
+      if (pc) {
+        await pc.setRemoteDescription(answer);
+      }
     };
 
-    const handleNewICECandidateMsg = async ({ candidate }) => {
-      try {
-        await peerConnectionRef.current.addIceCandidate(candidate);
-      } catch (e) {
-        console.error("Error adding ICE candidate", e);
+    const handleNewICECandidateMsg = async ({ from, candidate }) => {
+      const pc = peerConnectionsRef.current[from];
+      if (pc) {
+        try {
+          await pc.addIceCandidate(candidate);
+        } catch (e) {
+          console.error("Error adding ICE candidate", e);
+        }
       }
     };
 
@@ -119,9 +134,10 @@ const VideoCallRoom = () => {
     };
 
     startConnection();
+
     return () => {
       socketRef.current?.disconnect();
-      peerConnectionRef.current?.close();
+      Object.values(peerConnectionsRef.current).forEach((pc) => pc.close());
     };
   }, [roomId]);
 
@@ -137,7 +153,7 @@ const VideoCallRoom = () => {
 
   const leaveCall = () => {
     socketRef.current?.disconnect();
-    peerConnectionRef.current?.close();
+    Object.values(peerConnectionsRef.current).forEach((pc) => pc.close());
     navigate("/my-sessions");
   };
 
