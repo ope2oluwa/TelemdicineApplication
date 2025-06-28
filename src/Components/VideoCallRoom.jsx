@@ -87,9 +87,10 @@ const VideoCallRoom = () => {
       };
 
       pc.ontrack = (event) => {
-        if (remoteVideoRef.current) {
-          remoteVideoRef.current.srcObject = event.streams[0];
-          setRemoteStream(event.streams[0]);
+        const remoteStream = event.streams[0];
+        if (remoteVideoRef.current && remoteStream) {
+          remoteVideoRef.current.srcObject = remoteStream;
+          setRemoteStream(remoteStream);
         }
       };
 
@@ -100,16 +101,18 @@ const VideoCallRoom = () => {
       const pc = createPeerConnection(from);
       peerConnectionsRef.current[from] = pc;
 
+      await pc.setRemoteDescription(offer);
+
       localStreamRef.current.getTracks().forEach((track) => {
         pc.addTrack(track, localStreamRef.current);
       });
 
-      await pc.setRemoteDescription(offer);
       const answer = await pc.createAnswer();
       await pc.setLocalDescription(answer);
 
       socketRef.current.emit("answer", { target: from, answer });
     };
+    
 
     const handleReceiveAnswer = async ({ from, answer }) => {
       const pc = peerConnectionsRef.current[from];
