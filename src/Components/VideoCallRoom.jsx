@@ -47,6 +47,14 @@ const VideoCallRoom = () => {
 
       socketRef.current.emit("join", roomId);
 
+      // NEW: Connect to existing users already in the room
+      socketRef.current.on("existing-users", (users) => {
+        users.forEach((userId) => {
+          callUser(userId);
+        });
+      });
+
+      // Trigger call when a new user joins
       socketRef.current.on("user-joined", (userId) => {
         callUser(userId);
       });
@@ -55,6 +63,7 @@ const VideoCallRoom = () => {
       socketRef.current.on("answer", handleReceiveAnswer);
       socketRef.current.on("ice-candidate", handleNewICECandidateMsg);
       socketRef.current.on("chat-message", handleChatMessage);
+
     };
 
     const callUser = async (userId) => {
